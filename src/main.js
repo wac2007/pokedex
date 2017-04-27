@@ -3,7 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import 'bulma/css/bulma.css'
+import VueResource from 'vue-resource'
+import 'materialize-css/dist/css/materialize.css'
+
+Vue.use(VueResource)
+Vue.http.options.root = 'http://pokeapi.co/api/v2'
 
 Vue.config.productionTip = false
 
