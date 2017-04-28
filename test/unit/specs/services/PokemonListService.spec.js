@@ -8,27 +8,23 @@ import data from '../../mocks/MockPokemonList.json'
 import { mockData, removeMock } from '../../helpers'
 
 describe('PokemonListService', () => {
-  let service
-  before(function () {
+  let service, serverResponse
+  before(done => {
     mockData(data)
     service = new PokemonService(Vue.resource)
-  })
-  it('Pokémons deve ser um array', done => {
     service.listPokemons(0)
       .then(response => {
-        expect(response.results).to.be.an('array')
+        serverResponse = response
         done()
       })
   })
-  it('Objeto Pokémon deve conter um nome e url', function (done) {
-    this.timeout(5000)
-    service.listPokemons(0)
-      .then(response => {
-        let pokemon = response.results[0]
-        expect(pokemon).to.have.property('name')
-        expect(pokemon).to.have.property('url')
-        done()
-      })
+  it('Pokémons deve ser um array', () => {
+    expect(serverResponse.results).to.be.an('array')
+  })
+  it('Objeto Pokémon deve conter um nome e url', () => {
+    let pokemon = serverResponse.results[0]
+    expect(pokemon).to.have.property('name')
+    expect(pokemon).to.have.property('url')
   })
   after(() => {
     removeMock()
