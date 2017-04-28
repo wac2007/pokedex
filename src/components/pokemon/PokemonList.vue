@@ -2,11 +2,13 @@
   import PokemonService from '@/domain/Pokemon/PokemonService'
   import MugenScroll from 'vue-mugen-scroll'
   import capitalize from '@/filters/capitalize'
+  import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
   export default {
     name: 'pokemonList',
     components: {
-      MugenScroll
+      MugenScroll,
+      PulseLoader
     },
     filters: {
       capitalize: capitalize
@@ -24,10 +26,10 @@
       list () {
         this.loading = true
         this.service.listPokemons(this.offset)
-          .then(data => {
-            if (data.results) {
-              this.pokemons = this.pokemons.concat(data.results)
-              this.offset += data.results.length
+          .then(pokemons => {
+            if (pokemons) {
+              this.pokemons = this.pokemons.concat(pokemons)
+              this.offset += pokemons.length
             }
             this.loading = false
             this.$emit('finishLoadingPokemons')
@@ -56,7 +58,7 @@
         </li>
       </ul>
       <mugen-scroll :handler="list" :should-handle="!loading" scroll-container="scrollContainer" :handleOnMount="true">
-        loading...
+        Loading
       </mugen-scroll>
     </div>
   </div>

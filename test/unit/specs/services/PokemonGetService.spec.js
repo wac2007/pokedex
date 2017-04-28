@@ -3,12 +3,13 @@ import PokemonService from '@/domain/Pokemon/PokemonService'
 import data from '../../mocks/MockPokemonGet.json'
 import { mockData, removeMock } from '../../helpers'
 
-describe('PokemonListService', () => {
+describe('PokemonGetService', () => {
   let serverResponse
   before(done => {
+    localStorage.clear()
     mockData(data)
     let service = new PokemonService(Vue.resource)
-    service.listPokemons(0, 'butterfree')
+    service.getPokemon('butterfree')
       .then(response => {
         serverResponse = response
         done()

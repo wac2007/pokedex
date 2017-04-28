@@ -14,6 +14,9 @@ Vue.config.productionTip = false
 import VueEvents from 'vue-events'
 Vue.use(VueEvents)
 
+import VueLocalForage from 'vue-localforage'
+Vue.use(VueLocalForage)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -15,5 +15,5 @@
       "name": "venusaur"
     }
   ],
-  "next": "http://pokeapi.co/api/v2/pokemon/?offset=20"
+  "next": null
 }
