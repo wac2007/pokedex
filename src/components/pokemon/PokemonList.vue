@@ -58,7 +58,7 @@
         </li>
       </ul>
       <mugen-scroll :handler="list" :should-handle="!loading" scroll-container="scrollContainer" :handleOnMount="true">
-        Loading
+        Loading Pokémons <pulse-loader :loading="loading" color="red" size="20px"></pulse-loader>
       </mugen-scroll>
     </div>
   </div>
