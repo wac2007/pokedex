@@ -8,10 +8,10 @@ import data from '../../mocks/MockPokemonGet.json'
 import { mockData, removeMock } from '../../helpers'
 
 describe('PokemonListService', () => {
-  let service, serverResponse
+  let serverResponse
   before(done => {
     mockData(data)
-    service = new PokemonService(Vue.resource)
+    let service = new PokemonService(Vue.resource)
     service.listPokemons(0, 'butterfree')
       .then(response => {
         serverResponse = response

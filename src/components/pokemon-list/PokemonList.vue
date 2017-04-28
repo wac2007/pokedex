@@ -30,10 +30,11 @@
               this.offset += data.results.length
             }
             this.loading = false
+            this.$emit('finishLoadingPokemons')
           })
       },
       selectPokemon (pokemonName) {
-        this.$emit('pokemonSelected', pokemonName)
+        this.$emit('selectedPokemon', pokemonName)
         this.selectedPokemon = pokemonName
       }
     },
@@ -50,7 +51,7 @@
         <li class="collection-item">
           <input type="text" class="" placeholder="Search a Pokemon"/>
         </li>
-        <li v-for="pokemon in pokemons" :class="{active: selectedPokemon == pokemon.name}" class="collection-item" @click="selectPokemon(pokemon.name)">
+        <li v-for="pokemon in pokemons" :class="{active: selectedPokemon == pokemon.name}" class="pokemon-item collection-item" @click="selectPokemon(pokemon.name)">
           {{ pokemon.name | capitalize }}
         </li>
       </ul>
