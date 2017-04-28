@@ -32,6 +32,9 @@ export default class PokemonService {
       let pokemonArray = localStorage.getItem('pokemonArray')
       if (pokemonArray) {
         pokemonArray = JSON.parse(pokemonArray)
+        pokemonArray = pokemonArray.filter((pokemon) => {
+          return pokemon.name.includes(name)
+        })
         if (offset) {
           pokemonArray = pokemonArray.slice(offset, offset + limit)
         }

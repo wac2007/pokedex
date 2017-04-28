@@ -19,13 +19,14 @@
         nextUrl: '',
         offset: 0,
         selectedPokemon: '',
-        loading: false
+        loading: false,
+        searchName: ''
       }
     },
     methods: {
       list () {
         this.loading = true
-        this.service.listPokemons(this.offset)
+        this.service.listPokemons(this.offset, this.searchName)
           .then(pokemons => {
             if (pokemons) {
               this.pokemons = this.pokemons.concat(pokemons)
@@ -35,6 +36,11 @@
             this.$emit('finishLoadingPokemons')
           })
       },
+      refreshList () {
+        this.pokemons = []
+        this.offset = 0
+        this.list()
+      },
       selectPokemon (pokemonName) {
         this.$events.$emit('selectedPokemon', pokemonName)
         this.selectedPokemon = pokemonName
@@ -42,6 +48,7 @@
     },
     created () {
       this.service = new PokemonService(this.$resource)
+      this.refreshList()
     }
   }
 </script>
@@ -51,15 +58,12 @@
     <div>
       <ul class="collection">
         <li class="collection-item">
-          <input type="text" class="" placeholder="Search a Pokemon"/>
+          <input type="text" name="searchName" placeholder="Search a Pokemon" v-model="searchName" @input="refreshList"/>
         </li>
         <li v-for="pokemon in pokemons" :class="{active: selectedPokemon == pokemon.name}" class="pokemon-item collection-item" @click="selectPokemon(pokemon.name)">
           {{ pokemon.name | capitalize }}
         </li>
       </ul>
-      <mugen-scroll :handler="list" :should-handle="!loading" scroll-container="scrollContainer" :handleOnMount="true">
-        Loading Pokémons <pulse-loader :loading="loading" color="red" size="20px"></pulse-loader>
-      </mugen-scroll>
     </div>
   </div>
 </template>
