@@ -15,6 +15,6 @@ describe('Capitalize Filter', () => {
   })
   it('Deve falhar ao passar uma função', () => {
     let myFunc = function () { return '' }
-    expect(capitalize.bind(capitalize, )).to.throw()
+    expect(capitalize.bind(capitalize, myFunc)).to.throw()
   })
 })
