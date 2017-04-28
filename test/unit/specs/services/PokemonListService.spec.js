@@ -4,18 +4,13 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 Vue.http.options.root = 'http://pokeapi.co/api/v2'
-import data from '../mocks/MockPokemonList.json'
-
-Vue.http.interceptors.unshift((request, next) => {
-  next(request.respondWith(JSON.stringify(data), {
-    status: 200,
-    body: JSON.stringify(data)
-  }))
-})
+import data from '../../mocks/MockPokemonList.json'
+import { mockData, removeMock } from '../../helpers'
 
 describe('PokemonListService', () => {
   let service
   before(function () {
+    mockData(data)
     service = new PokemonService(Vue.resource)
   })
   it('Pokémons deve ser um array', done => {
@@ -34,5 +29,8 @@ describe('PokemonListService', () => {
         expect(pokemon).to.have.property('url')
         done()
       })
+  })
+  after(() => {
+    removeMock()
   })
 })
