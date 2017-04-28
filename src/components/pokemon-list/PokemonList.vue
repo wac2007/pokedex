@@ -1,32 +1,36 @@
 <script>
   import PokemonService from '@/domain/Pokemon/PokemonService'
-  import InfiniteLoading from 'vue-infinite-loading'
+  import MugenScroll from 'vue-mugen-scroll'
+  import capitalize from '@/filters/capitalize'
 
   export default {
     name: 'pokemonList',
     components: {
-      InfiniteLoading
+      MugenScroll
     },
     filters: {
-      capitalize (text) {
-        return text.charAt(0).toUpperCase() + text.slice(1)
-      }
+      capitalize: capitalize
     },
     data () {
       return {
         pokemons: [],
         nextUrl: '',
         offset: 0,
-        selectedPokemon: ''
+        selectedPokemon: '',
+        loading: false
       }
     },
     methods: {
       list () {
-        this.service.list(this.offset).then(data => {
-          this.pokemons = this.pokemons.concat(data.results)
-          this.offset += data.results.length
-          this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
-        })
+        this.loading = true
+        this.service.listPokemons(this.offset)
+          .then(data => {
+            if (data.results) {
+              this.pokemons = this.pokemons.concat(data.results)
+              this.offset += data.results.length
+            }
+            this.loading = false
+          })
       },
       selectPokemon (pokemonName) {
         this.$emit('pokemonSelected', pokemonName)
@@ -38,8 +42,9 @@
     }
   }
 </script>
+
 <template>
-  <div id="pokemon-list" class="side-nav fixed">
+  <div id="pokemon-list" class="side-nav fixed" ref="scrollContainer">
     <div>
       <ul class="collection">
         <li class="collection-item">
@@ -49,7 +54,9 @@
           {{ pokemon.name | capitalize }}
         </li>
       </ul>
-      <infinite-loading :on-infinite="list" ref="infiniteLoading"></infinite-loading>
+      <mugen-scroll :handler="list" :should-handle="!loading" scroll-container="scrollContainer" :handleOnMount="true">
+        loading...
+      </mugen-scroll>
     </div>
   </div>
 </template>

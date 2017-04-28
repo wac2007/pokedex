@@ -1,21 +1,15 @@
 export default class PokemonService {
   constructor (resource) {
-    this._resource = resource('pokemon{/id}{/name}')
+    this._resource = resource('pokemon')
   }
 
-  list (offset) {
+  listPokemons (offset) {
     return this._resource
       .get({offset})
       .then(res => res.json())
       .catch(err => {
-        console.log(err)
-        throw new Error('Não foi possível obter os Pokémons')
+        console.err('Error retrieving Pokémons', err)
+        throw new Error('Could not get Pokémons')
       })
-  }
-
-  search (id) {
-    return this._resource
-      .get({ id })
-      .then(res => res.json())
   }
 }
