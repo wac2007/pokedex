@@ -1,4 +1,9 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+Vue.http.options.root = 'http://pokeapi.co/api/v2'
+import VueEvents from 'vue-events'
+Vue.use(VueEvents)
 
 module.exports = {
   // Helper to mount component

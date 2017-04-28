@@ -11,6 +11,9 @@ Vue.http.options.root = 'http://pokeapi.co/api/v2'
 
 Vue.config.productionTip = false
 
+import VueEvents from 'vue-events'
+Vue.use(VueEvents)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

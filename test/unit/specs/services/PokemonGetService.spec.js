@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import PokemonService from '@/domain/Pokemon/PokemonService'
-import VueResource from 'vue-resource'
-
-Vue.use(VueResource)
-Vue.http.options.root = 'http://pokeapi.co/api/v2'
 import data from '../../mocks/MockPokemonGet.json'
 import { mockData, removeMock } from '../../helpers'
 

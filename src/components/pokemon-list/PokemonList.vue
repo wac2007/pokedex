@@ -34,7 +34,7 @@
           })
       },
       selectPokemon (pokemonName) {
-        this.$emit('selectedPokemon', pokemonName)
+        this.$events.$emit('selectedPokemon', pokemonName)
         this.selectedPokemon = pokemonName
       }
     },
