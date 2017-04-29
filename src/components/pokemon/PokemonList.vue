@@ -11,7 +11,7 @@
       PulseLoader
     },
     filters: {
-      capitalize: capitalize
+      capitalize
     },
     data () {
       return {
