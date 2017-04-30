@@ -92,10 +92,4 @@
   .side-nav {
     width: 200px;
   }
-  // @media only screen and (max-width : 992px) {
-  //   .side-nav.fixed {
-  //     width: 200px;
-  //   }
-  // }
-  
 </style>

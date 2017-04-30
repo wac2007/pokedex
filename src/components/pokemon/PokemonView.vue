@@ -3,11 +3,13 @@
   import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
   import capitalize from '@/filters/capitalize'
   import divide from '@/filters/divide'
+  import PokemonMoves from './PokemonMoves.vue'
 
   export default {
     name: 'pokemonView',
     components: {
-      ClipLoader
+      ClipLoader,
+      PokemonMoves
     },
     filters: {
       capitalize,
@@ -33,7 +35,6 @@
         return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other-sprites/official-artwork/${id}.png`
       },
       imageNotFound (event) {
-        console.log(`nf`, event)
         let el = event.target
         el.onerror = null
         el.src = '/static/not-found.jpg'
@@ -79,12 +80,10 @@
                 <p><b>Weight:</b> {{ pokemon.weight | divide }} kg</p>
                 <p><b>Height:</b> {{ pokemon.height | divide }} m</p>
               </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-              </div>
             </div>
           </div>
           <!-- End View Pokémon -->
+          <pokemon-moves :moveList="pokemon.moves" v-if="!loading && pokemon"/>
         </div>
       </div>
     </div>
