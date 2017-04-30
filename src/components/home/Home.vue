@@ -1,6 +1,7 @@
 <script>
 import PokemonList from '../pokemon/PokemonList.vue'
 import PokemonView from '../pokemon/PokemonView.vue'
+
 export default {
   name: 'home',
   components: {
@@ -19,7 +20,11 @@ export default {
         <hr/>
       </div>
     </div>
-    <pokemon-view/>
+    <div class="row">
+      <div class="col s12 m7">
+        <pokemon-view/>
+      </div>
+    </div>
   </div>
 </template>
 

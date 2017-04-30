@@ -22,14 +22,14 @@
   }
 </script>
 <template>
-  <div class="card">
+  <div class="card" v-if="moveList">
     <div class="card-content">
       <span class="card-title">Moves</span>
-      <ul class="collection" v-if="moveList">
-    <li class="collection-item" v-for="move in moveList" @click="selectMove(move.move.name)" :class="{active: move.move.name === selectedMove}">
-      {{ move.move.name | capitalize }}
-    </li>
-  </ul>
+      <ul class="collection">
+        <li class="collection-item" v-for="move in moveList" @click="selectMove(move.move.name)" :class="{active: move.move.name === selectedMove}">
+          {{ move.move.name | capitalize }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>

@@ -48,44 +48,38 @@
 </script>
 <template>
   <div id="pokemon-view">
-    <div>
-      <div class="row">
-        <div class="col s12 m7">
-        <!-- Pokémon Loading -->
-          <div class="card" v-if="loading">
-            <div class="card-stacked">
-              <div class="card-content">
-                <clip-loader :loading="loading" color="red" size="3em" />
-              </div>
-            </div>
+    <!-- Pokémon Loading -->
+      <div class="card" v-if="loading">
+        <div class="card-stacked">
+          <div class="card-content">
+            <clip-loader :loading="loading" color="red" size="3em" />
           </div>
-          <!-- End Pokémon Loading -->
-          <!-- Pokémon Status -->
-          <div class="card" v-if="!loading && !pokemon">
-            <div class="card-stacked">
-              <div class="card-content">
-                <h2>No Pokémon Selected</h2>
-              </div>
-            </div>
-          </div>
-          <!-- End Pokémon Status -->
-          <!-- View Pokémon -->
-          <div class="card horizontal" v-if="!loading && pokemon">
-            <div class="card-image">
-              <img :src="getImage(pokemon.id)" @error="imageNotFound($event)">
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <span class="card-title">{{ pokemon.name | capitalize }}</span>
-                <p><b>Weight:</b> {{ pokemon.weight | divide }} kg</p>
-                <p><b>Height:</b> {{ pokemon.height | divide }} m</p>
-              </div>
-            </div>
-          </div>
-          <!-- End View Pokémon -->
-          <pokemon-moves :moveList="pokemon.moves" v-if="!loading && pokemon"/>
         </div>
       </div>
+      <!-- End Pokémon Loading -->
+      <!-- Pokémon Status -->
+      <div class="card" v-if="!loading && !pokemon">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h2>No Pokémon Selected</h2>
+          </div>
+        </div>
+      </div>
+      <!-- End Pokémon Status -->
+      <!-- View Pokémon -->
+      <div class="card horizontal" v-if="!loading && pokemon">
+        <div class="card-image">
+          <img :src="getImage(pokemon.id)" @error="imageNotFound($event)">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <span class="card-title">{{ pokemon.name | capitalize }}</span>
+            <p><b>Weight:</b> {{ pokemon.weight | divide }} kg</p>
+            <p><b>Height:</b> {{ pokemon.height | divide }} m</p>
+          </div>
+        </div>
+      </div>
+      <!-- End View Pokémon -->
+      <pokemon-moves :moveList="pokemon.moves"/>
     </div>
-  </div>
 </template>
