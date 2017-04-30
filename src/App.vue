@@ -11,4 +11,12 @@ export default {
 </script>
 
 <style>
+    body {
+      padding-left: 200px;
+    }
+    @media only screen and (max-width : 992px) {
+      body {
+        padding-left: 0;
+      }
+    }
 </style>

@@ -13,14 +13,13 @@ export default {
 <template>
   <div id="home">
     <pokemon-list/>
-    <div class="container">
-      <div class="columns">
-        <div class="column auto text-center">
-          <h1>Pokontest</h1>
-        </div>
+    <div class="row">
+      <div class="col s12">
+        <h1>Pokontest</h1>
+        <hr/>
       </div>
-      <pokemon-view/>
     </div>
+    <pokemon-view/>
   </div>
 </template>
 

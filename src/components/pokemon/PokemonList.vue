@@ -2,13 +2,13 @@
   import PokemonService from '@/domain/Pokemon/PokemonService'
   import MugenScroll from 'vue-mugen-scroll'
   import capitalize from '@/filters/capitalize'
-  import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+  import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
 
   export default {
     name: 'pokemonList',
     components: {
       MugenScroll,
-      PulseLoader
+      ClipLoader
     },
     filters: {
       capitalize
@@ -49,6 +49,7 @@
     created () {
       this.service = new PokemonService(this.$resource)
       this.refreshList()
+      // this.loading = true
     }
   }
 </script>
@@ -56,9 +57,12 @@
 <template>
   <div id="pokemon-list" class="side-nav fixed" ref="scrollContainer">
     <div>
-      <ul class="collection">
+      <ul class="collection" :class="{loading: loading}">
         <li class="collection-item">
           <input type="text" name="searchName" placeholder="Search a Pokemon" v-model="searchName" @input="refreshList"/>
+        </li>
+        <li v-if="loading" class="item-spinner">
+          <clip-loader :loading="loading" color="red" size="2em" />
         </li>
         <li v-for="pokemon in pokemons" :class="{active: selectedPokemon == pokemon.name}" class="pokemon-item collection-item" @click="selectPokemon(pokemon.name)">
           {{ pokemon.name | capitalize }}
@@ -73,6 +77,25 @@
     margin: 0;
     .collection-item {
       cursor: pointer;
+      &.active {
+        background-color: #EE6E73;
+        color: #FFF;
+      }
+    }
+    &.loading {
+      border: none;
+    }
+    .item-spinner {
+      padding-top: 20px;
     }
   }
+  .side-nav {
+    width: 200px;
+  }
+  // @media only screen and (max-width : 992px) {
+  //   .side-nav.fixed {
+  //     width: 200px;
+  //   }
+  // }
+  
 </style>
