@@ -1,7 +1,7 @@
 import PokemonList from '@/components/pokemon/PokemonList.vue'
-import { mountComponent, mockData, removeMock } from '../../helpers'
+import { mountComponent, mockData, removeMock } from '../../../helpers'
 
-import data from '../../mocks/MockPokemonList.json'
+import data from '../../../mocks/MockPokemonList.json'
 
 describe('PokemonList.vue', () => {
   let elm

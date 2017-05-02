@@ -30,11 +30,15 @@
             this.loading = false
             this.$emit('pokemonLoaded')
           })
+          .catch(err => {
+            console.log('Error loading pokemon - Pokemon View', err)
+          })
       },
       getImage (id) {
         return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other-sprites/official-artwork/${id}.png`
       },
       imageNotFound (event) {
+        // Fallback for image not found
         let el = event.target
         el.onerror = null
         el.src = '/static/not-found.jpg'
