@@ -76,9 +76,7 @@
       }
     },
     created () {
-      this.$events.$on('selectedPokemon', pokemonName => {
-        this.getPokemon(pokemonName)
-      })
+      this.$events.$on('selectedPokemon', pokemonName => this.getPokemon(pokemonName))
       this.service = new PokemonService(this.$resource)
       this.serviceSpecie = new PokemonSpecieService(this.$resource)
     }

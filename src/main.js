@@ -14,6 +14,12 @@ Vue.config.productionTip = false
 import VueEvents from 'vue-events'
 Vue.use(VueEvents)
 
+import VueFire from 'vuefire'
+Vue.use(VueFire)
+
+import VeeValidate from 'vee-validate'
+Vue.use(VeeValidate)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

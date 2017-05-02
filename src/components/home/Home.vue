@@ -1,16 +1,18 @@
 <script>
-import PokemonList from '../pokemon/PokemonList.vue'
-import PokemonView from '../pokemon/PokemonView.vue'
-import MoveView from '../moves/MoveView.vue'
+  import PokemonList from '../pokemon/PokemonList.vue'
+  import PokemonView from '../pokemon/PokemonView.vue'
+  import MoveView from '../moves/MoveView.vue'
+  import CommentList from '../comment/CommentList.vue'
 
-export default {
-  name: 'home',
-  components: {
-    PokemonList,
-    PokemonView,
-    MoveView
+  export default {
+    name: 'home',
+    components: {
+      PokemonList,
+      PokemonView,
+      MoveView,
+      CommentList
+    }
   }
-}
 </script>
 
 <template>
@@ -27,6 +29,9 @@ export default {
       </div>
       <div class="col s12 m5">
         <move-view/>
+      </div>
+      <div class="col s12 m5">
+        <comment-list/>
       </div>
     </div>
   </div>
