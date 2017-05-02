@@ -35,6 +35,7 @@ describe('PokemonListService', () => {
       })
   })
   after(() => {
+    localStorage.clear()
     removeMock()
   })
 })

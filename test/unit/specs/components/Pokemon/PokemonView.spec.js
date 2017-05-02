@@ -2,8 +2,9 @@ import PokemonView from '@/components/pokemon/PokemonView.vue'
 import { mountComponent, mockData, removeMock } from '../../../helpers'
 
 import data from '../../../mocks/MockPokemonGet.json'
+import dataSpecie from '../../../mocks/MockSpeciesGet.json'
 
-describe('PokemonView.vue', () => {
+describe('PokemonView.vue - Pokemon', () => {
   let elm
   before(() => {
     localStorage.clear()

@@ -10,7 +10,7 @@ describe('PokemonGetService', () => {
     localStorage.clear()
     mockData(data)
     service = new PokemonService(Vue.resource)
-    service.getPokemon('butterfree')
+    service.getPokemon('bulbasaur')
       .then(response => {
         serverResponse = response
         done()
@@ -27,6 +27,7 @@ describe('PokemonGetService', () => {
     expect(serverResponse).to.have.property('id')
   })
   after(() => {
+    localStorage.clear()
     removeMock()
   })
 })
