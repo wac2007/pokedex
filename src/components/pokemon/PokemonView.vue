@@ -29,6 +29,7 @@
             this.pokemon = data || null
             this.loading = false
             this.$emit('pokemonLoaded')
+            console.log(this.pokemon)
           })
           .catch(err => {
             console.log('Error loading pokemon - Pokemon View', err)
@@ -80,6 +81,7 @@
             <span class="card-title">{{ pokemon.name | capitalize }}</span>
             <p><b>Weight:</b> {{ pokemon.weight | divide }} kg</p>
             <p><b>Height:</b> {{ pokemon.height | divide }} m</p>
+            <p v-for='stat in pokemon.stats'><b>{{ stat.stat.name | capitalize }}:</b> {{ stat.base_stat }}</p>
           </div>
         </div>
       </div>
