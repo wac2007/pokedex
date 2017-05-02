@@ -37,7 +37,7 @@
   }
 </script>
 <template>
-  <div id="move-info">
+  <div id="move-view">
     <div class="card">
       <div class="card-content">
         <span class="card-title">Move Info</span>
