@@ -3,6 +3,9 @@ import router from '@/router'
 import { mockData, removeMock } from '../../helpers'
 import data from '../../mocks/MockPokemonList.json'
 
+import VeeValidate from 'vee-validate'
+Vue.use(VeeValidate)
+
 describe('Home.vue', () => {
   before(() => {
     localStorage.clear()
