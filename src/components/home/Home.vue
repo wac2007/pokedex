@@ -18,7 +18,7 @@ export default {
     <pokemon-list/>
     <div class="row">
       <div class="col s12 text-center">
-        <img src="/static/pokedex_logo.png" />
+        <img alt="Pokédex" src="/static/pokedex_logo.png" />
       </div>
     </div>
     <div class="row">
