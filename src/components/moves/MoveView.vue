@@ -26,7 +26,6 @@
           .then(moveInfo => {
             this.move = moveInfo || null
             this.loading = false
-            console.log(moveInfo)
             this.$emit('moveLoaded')
           })
       }

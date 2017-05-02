@@ -27,7 +27,7 @@
       <div class="card-content">
         <span class="card-title">Moves</span>
         <ul class="collection">
-          <li class="collection-item" v-for="move in moveList" 
+          <li class="collection-item move-item" v-for="move in moveList" 
             @click="selectMove(move.move.name)" 
             :class="{active: move.move.name === selectedMove}">
               {{ move.move.name | capitalize }}

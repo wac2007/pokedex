@@ -1,6 +1,6 @@
 import interpolation from '@/filters/interpolation'
 
-describe('interpolation Filter', () => {
+describe('Interpolation Filter', () => {
   it('Deve interpolar o objeto', () => {
     let obj = {
       'subject': 'book'
