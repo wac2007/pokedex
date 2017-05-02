@@ -1,7 +1,7 @@
 <script>
-  import capitalize from '@//filters/capitalize'
+  import capitalize from '@/filters/capitalize'
   export default {
-    name: 'pokemonMoves',
+    name: 'moveList',
     props: ['moveList'],
     filters: {
       capitalize
@@ -22,14 +22,18 @@
   }
 </script>
 <template>
-  <div class="card" v-if="moveList">
-    <div class="card-content">
-      <span class="card-title">Moves</span>
-      <ul class="collection">
-        <li class="collection-item" v-for="move in moveList" @click="selectMove(move.move.name)" :class="{active: move.move.name === selectedMove}">
-          {{ move.move.name | capitalize }}
-        </li>
-      </ul>
+  <div id="move-list">
+    <div class="card" v-if="moveList">
+      <div class="card-content">
+        <span class="card-title">Moves</span>
+        <ul class="collection">
+          <li class="collection-item" v-for="move in moveList" 
+            @click="selectMove(move.move.name)" 
+            :class="{active: move.move.name === selectedMove}">
+              {{ move.move.name | capitalize }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>

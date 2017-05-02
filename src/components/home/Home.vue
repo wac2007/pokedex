@@ -1,12 +1,14 @@
 <script>
 import PokemonList from '../pokemon/PokemonList.vue'
 import PokemonView from '../pokemon/PokemonView.vue'
+import MoveView from '../moves/MoveView.vue'
 
 export default {
   name: 'home',
   components: {
     PokemonList,
-    PokemonView
+    PokemonView,
+    MoveView
   }
 }
 </script>
@@ -23,6 +25,9 @@ export default {
     <div class="row">
       <div class="col s12 m7">
         <pokemon-view/>
+      </div>
+      <div class="col s12 m3">
+        <move-view/>
       </div>
     </div>
   </div>

@@ -3,13 +3,13 @@
   import ClipLoader from 'vue-spinner/src/ClipLoader.vue'
   import capitalize from '@/filters/capitalize'
   import divide from '@/filters/divide'
-  import PokemonMoves from './PokemonMoves.vue'
+  import MoveList from '../moves/MoveList.vue'
 
   export default {
     name: 'pokemonView',
     components: {
       ClipLoader,
-      PokemonMoves
+      MoveList
     },
     filters: {
       capitalize,
@@ -80,6 +80,6 @@
         </div>
       </div>
       <!-- End View Pokémon -->
-      <pokemon-moves :moveList="pokemon.moves"/>
+      <move-list v-if="pokemon" :moveList="pokemon.moves"/>
     </div>
 </template>
