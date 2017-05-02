@@ -17,16 +17,15 @@ export default {
   <div id="home">
     <pokemon-list/>
     <div class="row">
-      <div class="col s12">
-        <h1>Pokontest</h1>
-        <hr/>
+      <div class="col s12 text-center">
+        <img src="/static/pokedex_logo.png" />
       </div>
     </div>
     <div class="row">
       <div class="col s12 m7">
         <pokemon-view/>
       </div>
-      <div class="col s12 m3">
+      <div class="col s12 m5">
         <move-view/>
       </div>
     </div>

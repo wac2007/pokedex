@@ -80,6 +80,6 @@
         </div>
       </div>
       <!-- End View Pokémon -->
-      <move-list v-if="pokemon" :moveList="pokemon.moves"/>
+      <move-list v-if="pokemon && !loading" :moveList="pokemon.moves"/>
     </div>
 </template>

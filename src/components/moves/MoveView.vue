@@ -49,13 +49,25 @@
         <div v-if="!move && !loading">
           <span>No Move Selected</span>
         </div>
-        <div v-if="move">
+        <div v-if="move && !loading">
           <span class="card-subtitle">{{ move.name | capitalize }}</span>
           <ul>
-            <li>Damage Type: {{ move.damage_class.name | capitalize }}</li>
-            <li>Accuracy: {{ move.accuracy }}</li>
-            <li>Power: {{ move.power }}</li>
-            <li>Description: {{ move.effect_entries[0].effect | interpolation({ effect_chance: move.effect_chance}) }}</li>
+            <li>
+              <span class="move-status">Damage Type:</span> 
+              {{ move.damage_class.name | capitalize }}
+            </li>
+            <li>
+              <span class="move-status">Accuracy:</span> 
+              {{ move.accuracy }}
+            </li>
+            <li>
+              <span class="move-status">Power:</span> 
+              {{ move.power }}
+            </li>
+            <li>
+              <span class="move-status">Description:</span> 
+              {{ move.effect_entries[0].effect | interpolation({ effect_chance: move.effect_chance}) }}
+            </li>
           </ul>
         </div>
       </div>
@@ -65,5 +77,12 @@
 <style scoped lang="scss">
   .v-spinner {
     margin-top: 20px;
+  }
+  .card-subtitle {
+    color: #EE6E73;
+    font-size: 18px;
+  }
+  .move-status {
+    font-weight: bold;
   }
 </style>
