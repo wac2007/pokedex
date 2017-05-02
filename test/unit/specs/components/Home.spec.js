@@ -1,13 +1,22 @@
 import Vue from 'vue'
 import router from '@/router'
+import { mockData, removeMock } from '../../helpers'
+import data from '../../mocks/MockPokemonList.json'
 
 describe('Home.vue', () => {
-  it('Deve Renderizar e trazer o componente correto', () => {
+  before(() => {
+    localStorage.clear()
+    mockData(data)
+  })
+  it('Deve Renderizar e trazer o componente Home', () => {
     const elm = new Vue({
       el: document.createElement('div'),
       router: router,
       render: h => h('router-view')
     })
     expect(elm.$el.id).to.equal('home')
+  })
+  after(() => {
+    removeMock()
   })
 })
