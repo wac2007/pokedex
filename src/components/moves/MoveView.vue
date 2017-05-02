@@ -32,6 +32,7 @@
     },
     created () {
       this.$events.$on('selectedMove', moveName => this.getMoveInfo(moveName))
+      this.$events.$on('selectedPokemon', () => { this.move = null })
       this.service = new MoveService(this.$resource)
     }
   }
