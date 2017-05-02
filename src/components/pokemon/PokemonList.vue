@@ -34,6 +34,9 @@
             }
             this.loading = false
             this.$emit('finishLoadingPokemons')
+          }).catch(() => {
+            this.loading = false
+            alert('Error on loading Pokémons')
           })
       },
       refreshList () {
@@ -49,7 +52,6 @@
     created () {
       this.service = new PokemonService(this.$resource)
       this.refreshList()
-      // this.loading = true
     }
   }
 </script>
@@ -61,7 +63,8 @@
         <li class="collection-item">
           <input type="text" name="searchName" placeholder="Search a Pokemon" v-model="searchName" @input="refreshList"/>
         </li>
-        <li v-if="loading" class="item-spinner">
+        <li v-if="loading" class="item-spinner text-center">
+          Loading Pokémons
           <clip-loader :loading="loading" color="red" size="2em" />
         </li>
         <li v-for="pokemon in pokemons" :class="{active: selectedPokemon == pokemon.name}" class="pokemon-item collection-item" @click="selectPokemon(pokemon.name)">
