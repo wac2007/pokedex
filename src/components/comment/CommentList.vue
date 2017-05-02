@@ -58,6 +58,7 @@
     }
   }
 </script>
+
 <template>
   <div id="comment-list" class="card">
     <div class="card-content">
@@ -88,6 +89,7 @@
     </div>
   </div>
 </template>
+
 <style scoped lang='scss'>
   .comment-item {
     border-bottom: 1px solid #1e1e1e;
