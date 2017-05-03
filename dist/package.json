@@ -1,0 +1,10 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "A Pokedex for HE Test",
+  "author": "Awesome Author",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install express"
+  }
+}
