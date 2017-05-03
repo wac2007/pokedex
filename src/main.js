@@ -7,7 +7,7 @@ import VueResource from 'vue-resource'
 import 'materialize-css/dist/css/materialize.css'
 
 Vue.use(VueResource)
-Vue.http.options.root = 'http://pokeapi.co/api/v2'
+Vue.http.options.root = 'https://pokeapi.co/api/v2'
 
 Vue.config.productionTip = false
 

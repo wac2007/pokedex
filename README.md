@@ -27,4 +27,20 @@ npm run e2e
 npm test
 ```
 
+## Deploy Application
+
+Run 
+```
+npm run build
+```
+
+Then run
+```
+npm run deploy
+```
+or
+```
+git subtree push --prefix dist heroku master
+```
+
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
